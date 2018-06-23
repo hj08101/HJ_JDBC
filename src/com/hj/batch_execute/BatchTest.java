@@ -20,11 +20,14 @@ public class BatchTest {
 			for (int i = 1; i <= 10000; i++) {
 				preparedStatement.setObject(1, "小明"+i);
 				preparedStatement.setObject(2, "123abc");
-				preparedStatement.addBatch();
+				//添加批量处理
+				preparedStatement.addBatch();  
 				//批量处理,每次处理1000条数据
 				if (i % 1000 ==0) {
+					//执行批量处理
 					preparedStatement.executeBatch();
-					preparedStatement.clearBatch();//一定要清空
+					//一定要清空
+					preparedStatement.clearBatch();
 				}
 			}
 		} catch (SQLException e) {
